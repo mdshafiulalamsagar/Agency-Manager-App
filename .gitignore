@@ -1,0 +1,20 @@
+# --- Python / Django ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+db.sqlite3
+.DS_Store
+
+# --- Flutter ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+android/.gradle
+.idea/
+*.iml
