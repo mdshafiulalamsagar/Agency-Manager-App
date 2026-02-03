@@ -1,4 +1,4 @@
-# 🚀 Agency Manager - By ScalerVerse
+# Agency Manager - By ScalerVerse
 
 **Agency Manager** is a full-stack production-ready application designed to streamline operations for digital agencies. Built with **Flutter (Frontend)** and **Django (Backend)**, it offers a complete suite of tools for project tracking, financial management, and client relations.
 
