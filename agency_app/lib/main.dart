@@ -128,7 +128,7 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
 
   Future<void> fetchProjects() async {
     // NOTE: Use 10.0.2.2 for Emulator, 127.0.0.1 for Web
-    final url = Uri.parse('http://127.0.0.1:8000/api/projects/');
+    final url = Uri.parse('https://sagarm.pythonanywhere.com/api/projects/');
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -274,7 +274,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
   }
 
   Future<void> _refreshData() async {
-    final url = Uri.parse('http://127.0.0.1:8000/api/projects/${_project.id}/');
+    final url = Uri.parse('https://sagarm.pythonanywhere.com/api/projects/${_project.id}/');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       setState(() => _project = Project.fromJson(json.decode(response.body)));
@@ -296,7 +296,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
     );
 
     if (confirm == true) {
-      final url = Uri.parse('http://127.0.0.1:8000/api/projects/${_project.id}/');
+      final url = Uri.parse('https://sagarm.pythonanywhere.com/api/projects/${_project.id}/');
       await http.delete(url);
       if (mounted) Navigator.pop(context);
     }
@@ -360,7 +360,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                   newHistory = "$newHistory\n$addedReason: \$$addedAmount".trim();
                 }
 
-                final url = Uri.parse('http://127.0.0.1:8000/api/projects/${_project.id}/');
+                final url = Uri.parse('https://sagarm.pythonanywhere.com/api/projects/${_project.id}/');
                 await http.patch(
                   url, 
                   headers: {"Content-Type": "application/json"},
@@ -544,7 +544,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                 child: Column(children: [
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [const Text("Progress"), Text("${_project.progress}%", style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.indigo))]),
                   Slider(value: _project.progress.toDouble(), min: 0, max: 100, divisions: 100, onChanged: (val) async {
-                    final url = Uri.parse('http://127.0.0.1:8000/api/projects/${_project.id}/');
+                    final url = Uri.parse('https://sagarm.pythonanywhere.com/api/projects/${_project.id}/');
                     await http.patch(url, headers: {"Content-Type": "application/json"}, body: jsonEncode({"progress": val.toInt()}));
                     _refreshData();
                   }),
@@ -645,7 +645,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
 
   Future<void> submit() async {
     if (_formKey.currentState!.validate()) {
-      final url = Uri.parse('http://127.0.0.1:8000/api/projects/');
+      final url = Uri.parse('https://sagarm.pythonanywhere.com/api/projects/');
       await http.post(
         url,
         headers: {"Content-Type": "application/json"},
